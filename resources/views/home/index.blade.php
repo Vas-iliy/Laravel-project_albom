@@ -3,7 +3,7 @@
 @section('content')
 <div class="py-5">
     <div class="container">
-        @if(!$alboms->count())
+        @if($alboms->count())
         <div class="row">
             @foreach($alboms as $albom)
             <div class="col-md-12">

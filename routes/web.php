@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/create', [CreateController::class, 'index'])->name('create');
 Route::post('/albom', [CreateController::class, 'albom'])->name('albom');
-Route::post('/albom', [CreateController::class, 'create'])->name('create.albom');
+Route::post('/new-albom', [CreateController::class, 'create'])->name('create.albom');
 
 //Auth
 Route::group(['middleware' => 'guest'], function () {

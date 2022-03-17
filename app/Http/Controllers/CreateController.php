@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\AlbomRequest;
 
 class CreateController extends Controller
 {
@@ -11,7 +11,7 @@ class CreateController extends Controller
         return view('create.index');
     }
 
-    public function albom()
+    public function albom(AlbomRequest $request)
     {
 
     }

@@ -30,6 +30,6 @@ class HomeController extends Controller
     public function index()
     {
         $alboms = $this->alboms->getAll();
-        return view('index', compact('alboms'));
+        return view('home.index', compact('alboms'));
     }
 }
