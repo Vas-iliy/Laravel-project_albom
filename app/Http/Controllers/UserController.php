@@ -30,7 +30,7 @@ class UserController extends Controller
         if ($user) {
             $this->service->login($user);
         }
-        return redirect()->home()->with('success', 'Регистрация пройдена! пожалуйста, подтвердите E-mail!');
+        return redirect()->home()->with('success', 'Регистрация пройдена!');
     }
 
     public function loginForm()
