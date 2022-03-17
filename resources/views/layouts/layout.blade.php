@@ -50,12 +50,7 @@
                         <li><a href="{{route('home')}}l">Home</a></li>
                         <li><a href="{{route('create')}}">Create</a></li>
                         @auth
-                            <li><a href="#">
-                                {{auth()->user()->name}}
-                                @if(auth()->user()->avatar)
-                                    <img src="{{asset('storage/'.auth()->user()->avatar )}}" alt="" height="40px">
-                                @endif
-                            </a></li>
+                            <li>{{auth()->user()->name}}</li>
                             <li><a href="{{route('logout')}}">Logout</a></li>
                         @endauth
                         @guest

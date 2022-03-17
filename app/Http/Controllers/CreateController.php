@@ -6,5 +6,18 @@ use Illuminate\Http\Request;
 
 class CreateController extends Controller
 {
-    //
+    public function index()
+    {
+        return view('create.index');
+    }
+
+    public function albom()
+    {
+
+    }
+
+    public function create()
+    {
+
+    }
 }

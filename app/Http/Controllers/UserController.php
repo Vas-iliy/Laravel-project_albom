@@ -21,7 +21,7 @@ class UserController extends Controller
 
     public function register()
     {
-        return view('front.user.register');
+        return view('user.register');
     }
 
     public function store(RegisterUser $request)
@@ -35,7 +35,7 @@ class UserController extends Controller
 
     public function loginForm()
     {
-        return view('front.user.login');
+        return view('user.login');
     }
 
     public function login(LoginUser $request)
@@ -43,9 +43,6 @@ class UserController extends Controller
         if ($this->service->attempt($request)) {
             session()->flash('success', 'You are logged');
             $user = $this->users->getId(Auth::id());
-            if ($user->role->role == 'admin') {
-                return redirect()->route('admin.index');
-            }
             return redirect()->home();
         }
         return redirect()->back()->with('error', 'Incorrect login or password');
@@ -59,6 +56,6 @@ class UserController extends Controller
 
     public function show()
     {
-        return view('front.user.show');
+        return view('user.show');
     }
 }
