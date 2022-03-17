@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CreateController;
+use App\Http\Controllers\UserController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -9,20 +10,6 @@ Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('h
 Route::get('/create', [CreateController::class, 'index'])->name('create');
 Route::post('/albom', [CreateController::class, 'albom'])->name('albom');
 Route::post('/albom', [CreateController::class, 'create'])->name('create.albom');
-
-//Admin
-Route::group(['prefix' => 'admin', 'middleware' => 'verified'], function () {
-    Route::get('/', [\App\Http\Controllers\Admin\MainController::class, 'index'])->name('admin.index');
-    Route::resource('/categories', CategoryController::class)->middleware('admin');
-    Route::post('/categories/activate/{category}', [CategoryController::class, 'activate'])->name('categories.activate')->middleware('admin');
-    Route::post('/categories/draft/{category}', [CategoryController::class, 'draft'])->name('categories.draft')->middleware('admin');
-    Route::resource('/tags', TagController::class)->middleware('admin');
-    Route::post('/tags/activate/{tag}', [TagController::class, 'activate'])->name('tags.activate')->middleware('admin');
-    Route::post('/tags/draft/{tag}', [TagController::class, 'draft'])->name('tags.draft')->middleware('admin');
-    Route::resource('/posts', PostController::class);
-    Route::post('/posts/activate/{post}', [PostController::class, 'activate'])->name('posts.activate')->middleware('admin');
-    Route::post('/posts/draft/{post}', [PostController::class, 'draft'])->name('posts.draft')->middleware('admin');
-});
 
 //Auth
 Route::group(['middleware' => 'guest'], function () {
