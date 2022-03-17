@@ -53,9 +53,4 @@ class UserController extends Controller
         $this->service->logout();
         return redirect()->home();
     }
-
-    public function show()
-    {
-        return view('user.show');
-    }
 }

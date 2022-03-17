@@ -9,7 +9,7 @@ class AlbomRepository
 {
     public function getId($id)
     {
-        if (!$albom = Albom::query()->where('id', $id)->first()) {
+        if (!$albom = Albom::query()->find($id)) {
             throw new NotFoundHttpException('Category is not found');
         }
         return $albom;
@@ -23,11 +23,5 @@ class AlbomRepository
     public function remove($albom)
     {
         $albom->delete();
-    }
-
-    public function save($albom)
-    {
-        if (!$return = $albom->save()) throw new \RuntimeException('Saving albom error.');
-        return $return;
     }
 }

@@ -28,10 +28,11 @@ class AlbomService
     {
         $albom = explode('___', $request->albom);
         $albomInfo = Http::get("http://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=57d242cef4c59ff3a3dddb723b00a950&artist={$albom[1]}&album={$albom[0]}&format=json");
+
         return [
             'name' => $albomInfo['album']['name'],
             'artist' => $albomInfo['album']['artist'],
-            'content' => $albomInfo['album']['wiki']['content'],
+            'content' => empty($albomInfo['album']['wiki']['content']) ? 'Информация не найдена' : $albomInfo['album']['wiki']['content'],
             'image' => $albomInfo['album']['image'][count($albomInfo['album']['image'])-1]['#text']
         ];
     }
@@ -40,11 +41,10 @@ class AlbomService
     public function create(AlbomCreateRequest $request)
     {
         $albom = Albom::query()->create($request->all());
-        $this->alboms->save($albom);
         return $albom;
     }
 
-    public function edit($id, AlbomRequest $request)
+    public function edit($id, AlbomCreateRequest $request)
     {
         $albom = Albom::query()->find($id)->update($request->all());
         return $albom;
