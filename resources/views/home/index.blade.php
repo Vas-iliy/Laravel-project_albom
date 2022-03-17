@@ -10,9 +10,12 @@
                 <div class="card">
                     <img class="card-img-top" src="{{$albom->image}}" alt="Card image cap">
                     <div class="card-body">
+                        <p>Альбом:</p>
                         <h2 class="card-title">{{$albom->name}}</h2>
+                        <p>Исполнитель:</p>
                         <h4 class="card-title">{{$albom->artist}}</h4>
-                        <p class="card-text"{{$albom->content}}</p>
+                        <hr>
+                        <p class="card-text">{{$albom->content}}</p>
                     </div>
                 </div>
             </div>

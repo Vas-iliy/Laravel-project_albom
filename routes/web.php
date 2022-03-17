@@ -10,6 +10,7 @@ Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('h
 Route::get('/create', [CreateController::class, 'index'])->name('create');
 Route::post('/albom', [CreateController::class, 'albom'])->name('albom');
 Route::post('/new-albom', [CreateController::class, 'create'])->name('create.albom');
+Route::post('/send', [CreateController::class, 'store'])->name('create.send');
 
 //Auth
 Route::group(['middleware' => 'guest'], function () {
