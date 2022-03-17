@@ -3,6 +3,7 @@
 namespace App\Core\services;
 
 
+use App\Core\Logs\UpdateLog;
 use App\Core\repositories\AlbomRepository;
 use App\Http\Requests\AlbomCreateRequest;
 use App\Http\Requests\AlbomRequest;
@@ -47,6 +48,7 @@ class AlbomService
     public function edit($id, AlbomCreateRequest $request)
     {
         $albom = Albom::query()->find($id)->update($request->all());
+        UpdateLog::updateLog($request);
         return $albom;
     }
 
