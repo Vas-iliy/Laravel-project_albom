@@ -7,9 +7,9 @@
                 @csrf
                 <div class="form-group">
                     <label for="exampleInputEmail1">Название альбома</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <input name="title" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary">Поиск</button>
             </form>
         </div>
     </div>

@@ -6,6 +6,7 @@ namespace App\Core\services;
 use App\Core\repositories\AlbomRepository;
 use App\Http\Requests\AlbomRequest;
 use App\Models\Albom;
+use Illuminate\Support\Facades\Http;
 
 class AlbomService
 {
@@ -16,7 +17,13 @@ class AlbomService
         $this->alboms = $alboms;
     }
 
-    public function create(AlbomRequest $request)
+    public function searchAlbom(AlbomRequest $request)
+    {
+        return Http::get("http://ws.audioscrobbler.com/2.0/?method=album.search&album={$request->title}&api_key=57d242cef4c59ff3a3dddb723b00a950&format=json")['results']['albummatches']['album'];
+    }
+
+
+    public function create(AlbomCreateRequest $request)
     {
         $albom = Albom::query()->create($request->all());
         $this->alboms->save($albom);
